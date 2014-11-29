@@ -21,7 +21,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="index.html">DreamVids</a>
+					<a class="navbar-brand" href="<?php echo WEBROOT.'admin/dashboard'; ?>">DreamVids</a>
 				</div>
 				<div class="collapse navbar-collapse navbar-ex1-collapse">
 					<ul class="nav navbar-nav side-nav">
@@ -29,7 +29,7 @@
 						<li><a href="<?php echo WEBROOT.'admin/videos'; ?>"><i class="fa fa-lg fa-play"></i> Vidéos</a></li>
 						<li><a href="<?php echo WEBROOT.'admin/channels'; ?>"><i class="fa fa-lg fa-child"></i> Chaînes</a></li>
 						<li><a href="<?php echo WEBROOT.'admin/comments'; ?>"><i class="fa fa-lg fa-comment-o"></i> Commentaires</a></li>
-						<li><a href="<?php echo WEBROOT.'admin'; ?>"><i class="fa fa-lg fa-times"></i> Déconnexion</a></li>
+						<li><a href="<?php echo WEBROOT; ?>"><i class="fa fa-lg fa-times"></i> Quitter</a></li>
 					</ul>
 				</div>
 			</nav>

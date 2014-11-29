@@ -91,7 +91,7 @@ class AdminController extends Controller {
 			$data['isModo'] = Session::get()->isModerator();
 			$data['isAdmin'] = Session::get()->isAdmin();
 			$data['user'] = Session::get();
-			$data['comments'] = Comment::getReportedComments();
+			// $data['comments'] = Comment::getReportedComments();
 
 			return new ViewResponse('admin/comments', $data, true, 'layouts/admin.php');
 		}

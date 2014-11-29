@@ -1,8 +1,7 @@
-<div class="content">
-	<h1 class="title">Panel <?php echo $rankStr; ?> - Videos reportés/suspendues</h1>
-
-	<div class="reports">
-		<table class="pure-table">
+<div id="page-wrapper">
+	<div class="container-fluid">
+	<h1>Panel <?php echo $rankStr; ?> - Videos reportés/suspendues</h1>
+		<table class="table table-bordered">
 			<thead>
 				<tr>
 					<th>Titre</th>
@@ -38,7 +37,5 @@
 				<?php endforeach ?>
 			</tbody>
 		</table>
-
-		
 	</div>
 </div>
