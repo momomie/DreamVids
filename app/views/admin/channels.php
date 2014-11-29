@@ -1,8 +1,7 @@
-<div class="content">
-	<h1 class="title">Panel <?php echo $rankStr; ?> - Liste des chaînes </h1>
-
-	<div class="reports">
-		<table class="pure-table">
+<div id="page-wrapper">
+	<div class="container-fluid">
+	<h1>Panel <?php echo $rankStr; ?> - Liste des chaînes</h1>
+		<table class="table table-bordered">
 			<thead>
 				<tr>
 					<th>Nom</th>
@@ -22,12 +21,10 @@
 						<td><?php echo $chan->getAdminsNames(); ?></td>
 						<td><?php echo $chan->views; ?></td>
 						<td><?php echo $chan->subscribers; ?></td>
-						<td><button class="button-warning pure-button" onclick="alert('Pas encore implémenté')">Envoyer un message</button></td>
+						<td><button class="btn btn-danger">Suprimer</button></td>
 					</tr>
 				<?php endforeach ?>
 			</tbody>
 		</table>
-
-		
 	</div>
 </div>

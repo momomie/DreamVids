@@ -39,9 +39,7 @@ class UserChannel extends ActiveRecord\Model {
 		$adminsStr = '';
 
 		if(strpos($this->admins_ids, ';') !== false) {
-			$adminsIds = explode(';', $this->admins_ids);
-
-			if(empty($adminsIds[count($adminsIds) - 1])) unset($adminsIds[count($adminsIds) - 1]);
+			$adminsIds = explode(';', trim($this->admins_ids, ';'));
 
 			foreach ($adminsIds as $id) {
 				$adminsStr .= User::exists($id) ? User::find($id)->username.', ' : '';

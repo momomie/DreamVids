@@ -1,8 +1,7 @@
-<div class="content">
-	<h1 class="title">Panel <?php echo $rankStr; ?> - Commentaires reportés </h1>
-
-	<div class="reports">
-		<table class="pure-table">
+<div id="page-wrapper">
+	<div class="container-fluid">
+	<h1>Panel <?php echo $rankStr; ?> - Commentaires reportés</h1>
+		<table class="table table-bordered">
 			<thead>
 				<tr>
 					<th>Auteur</th>
@@ -27,14 +26,12 @@
 						<td><?php echo $com->likes; ?></td>
 						<td><?php echo $com->dislikes; ?></td>
 						<td>
-							<button class="button-success pure-button" onclick="unflagComment('<?php echo $com->id; ?>')">Annuler le flag</button>
-							<button class="button-error pure-button" onclick="eraseComment('<?php echo $com->id; ?>')">Supprimer</button>
+							<button class="btn btn-success" onclick="unflagComment('<?php echo $com->id; ?>')">Annuler le flag</button>
+							<button class="btn btn-danger" onclick="eraseComment('<?php echo $com->id; ?>')">Supprimer</button>
 						</td>
 					</tr>
 				<?php endforeach ?>
 			</tbody>
 		</table>
-
-		
 	</div>
 </div>

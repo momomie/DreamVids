@@ -37,10 +37,10 @@ $router = new Router();
 $request = Utils::getPerformedRequest();
 
 /* BETA UNIQUEMENT. A RETIRER AVANT LA PRODUCTION FINALE */
-if (!Session::isActive() && !preg_match("#^(beta|login|lives|password|embed)(/.*)?$#isU", $request->getURI())) {
-	header('location:'.WEBROOT.'beta');
-	exit();
-}
+// if (!Session::isActive() && !preg_match("#^(beta|login|lives|password|embed)(/.*)?$#isU", $request->getURI())) {
+// 	header('location:'.WEBROOT.'beta');
+// 	exit();
+// }
 /* BETA UNIQUEMENT. A RETIRER AVANT LA PRODUCTION FINALE */
 
 $router->executeRequest($request);

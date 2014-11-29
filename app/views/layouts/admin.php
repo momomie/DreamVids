@@ -6,30 +6,40 @@
 
 		<?php isset($currentPage) ? include(VIEW.'layouts/pages/'.$currentPage.'/meta.php') : include(VIEW.'layouts/pages/default/meta.php'); ?>
 
-		<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
-		<link rel="stylesheet" href="<?php echo CSS.'admin.css'; ?>">
+		<link rel="stylesheet" href="<?php echo ASSETS.'panel/css/bootstrap.min.css'; ?>">
+		<link rel="stylesheet" href="<?php echo ASSETS.'panel/css/sb-admin.css'; ?>">
+		<link rel="stylesheet" href="<?php echo ASSETS.'panel/font-awesome/css/font-awesome.min.css'; ?>">
 	</head>
 
 	<body>
-		<div class="page">
-			<div id="menu">
-				<div class="pure-menu pure-menu-open">
-					<a class="pure-menu-heading" href="<?php echo WEBROOT.'admin'; ?>">DreamVids</a>
-
-					<ul>
-						<li><a href="<?php echo WEBROOT.'admin/dashboard'; ?>">Tableau de bord</a></li>
-						<li><a href="<?php echo WEBROOT.'admin/videos'; ?>">Videos</a></li>
-						<li><a href="<?php echo WEBROOT.'admin/channels'; ?>">Chaînes</a></li>
-						<li><a href="<?php echo WEBROOT.'admin/comments'; ?>">Commentaires</a></li>
-						<li><a href="<?php echo WEBROOT.'admin'; ?>">Déconnexion</a></li>
+		<div id="wrapper">
+			<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="index.html">DreamVids</a>
+				</div>
+				<div class="collapse navbar-collapse navbar-ex1-collapse">
+					<ul class="nav navbar-nav side-nav">
+						<li><a href="<?php echo WEBROOT.'admin/dashboard'; ?>"><i class="fa fa-lg fa-dashboard"></i> Tableau de bord</a></li>
+						<li><a href="<?php echo WEBROOT.'admin/videos'; ?>"><i class="fa fa-lg fa-play"></i> Vidéos</a></li>
+						<li><a href="<?php echo WEBROOT.'admin/channels'; ?>"><i class="fa fa-lg fa-child"></i> Chaînes</a></li>
+						<li><a href="<?php echo WEBROOT.'admin/comments'; ?>"><i class="fa fa-lg fa-comment-o"></i> Commentaires</a></li>
+						<li><a href="<?php echo WEBROOT.'admin'; ?>"><i class="fa fa-lg fa-times"></i> Déconnexion</a></li>
 					</ul>
 				</div>
-			</div>
+			</nav>
 
-			<?php include($content); ?>
-			<br>
+		<?php include($content); ?>
+
 		</div>
 
+		<script src="<?php echo ASSETS.'panel/js/bootstrap.min.js'; ?>"></script>
+		<script src="<?php echo ASSETS.'panel/js/jquery.js'; ?>"></script>
 		<?php isset($currentPage) ? include(VIEW.'layouts/pages/'.$currentPage.'/scripts.php') : include(VIEW.'layouts/pages/default/scripts.php'); ?>
 	</body>
 </html>
