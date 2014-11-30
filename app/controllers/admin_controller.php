@@ -55,8 +55,6 @@ class AdminController extends Controller {
 			$data['isModo'] = Session::get()->isModerator();
 			$data['isAdmin'] = Session::get()->isAdmin();
 
-			$data['isFlagged'] = Video::isFlagged();
-
 			$data['type'] = $type;
 
 			if($type == 'flagged'){
