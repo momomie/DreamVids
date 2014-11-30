@@ -25,7 +25,7 @@ class AdminController extends Controller {
 	}
 
 	public function dashboard($request) {
-		if(Session::get()->isModerator() || Session::get()->isAdmin()) {
+		if(Session::isActive() && (Session::get()->isModerator() || Session::get()->isAdmin())){
 			$data = array();
 
 			$data['currentPage'] = 'admin';
@@ -48,7 +48,7 @@ class AdminController extends Controller {
 	}
 
 	public function videos($request, $type = 'all', $query = "") {
-		if(Session::get()->isModerator() || Session::get()->isAdmin()) {
+		if(Session::isActive() && (Session::get()->isModerator() || Session::get()->isAdmin())) {
 			$data = array();
 
 			$data['currentPage'] = 'admin';
@@ -85,7 +85,7 @@ class AdminController extends Controller {
 	}
 
 	public function channels($request) {
-		if(Session::get()->isModerator() || Session::get()->isAdmin()) {
+		if(Session::isActive() && (Session::get()->isModerator() || Session::get()->isAdmin())){
 			$data = array();
 
 			$data['currentPage'] = 'admin';
@@ -107,7 +107,7 @@ class AdminController extends Controller {
 	}
 
 	public function comments($request) {
-		if(Session::get()->isModerator() || Session::get()->isAdmin()) {
+		if(Session::isActive() && (Session::get()->isModerator() || Session::get()->isAdmin())){
 			$data = array();
 
 			$data['currentPage'] = 'admin';
