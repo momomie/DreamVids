@@ -6,7 +6,7 @@
 			<h2><?php echo $user->username; ?> <small><?php echo $rankStr ?></small></h2>
 			<div class="row">
 				<div class="col-lg-3">
-					<div class="panel panel-red">
+					<div class="panel panel-<?php echo $reportedCommentsColor; ?>">
 						<div class="panel-heading">
 							<div class="row">
 								<div class="col-xs-3">
@@ -28,7 +28,7 @@
 					</div>
 				</div>
 				<div class="col-lg-3">
-					<div class="panel panel-red">
+					<div class="panel panel-<?php echo $reportedVidsColor; ?>">
 						<div class="panel-heading">
 							<div class="row">
 								<div class="col-xs-3">
@@ -40,7 +40,7 @@
 								</div>
 							</div>
 						</div>
-						<a href="<?php echo WEBROOT.'admin/videos'; ?>">
+						<a href="<?php echo WEBROOT.'admin/videos' . ($reportedVidsCount > 0 ? "/flagged" : ""); ?>">
 							<div class="panel-footer">
 								<span class="pull-left">Voir</span>
 								<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

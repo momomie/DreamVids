@@ -41,8 +41,8 @@
 
 		</div>
 
-		<script src="<?php echo ASSETS.'panel/js/bootstrap.min.js'; ?>"></script>
 		<script src="<?php echo ASSETS.'panel/js/jquery.js'; ?>"></script>
+		<script src="<?php echo ASSETS.'panel/js/bootstrap.min.js'; ?>"></script>
 		<?php isset($currentPage) ? include(VIEW.'layouts/pages/'.$currentPage.'/scripts.php') : include(VIEW.'layouts/pages/default/scripts.php'); ?>
 	</body>
 </html>

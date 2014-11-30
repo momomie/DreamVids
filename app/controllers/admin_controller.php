@@ -36,7 +36,10 @@ class AdminController extends Controller {
 			$data['isAdmin'] = Session::get()->isAdmin();
 			$data['user'] = Session::get();
 			$data['reportedVidsCount'] = Video::count(array('conditions' => array('flagged', 1)));
-			$data['reportedCommentsCount'] = Comment::count(array('conditions' => array('flagged', 1)));;
+			$data['reportedCommentsCount'] = Comment::count(array('conditions' => array('flagged', 1)));
+			
+			$data['reportedCommentsColor'] = $data['reportedCommentsCount'] >= 10 ? "red" : ($data['reportedCommentsCount'] > 0 ? "yellow" : "green"); 
+			$data['reportedVidsColor'] = $data['reportedVidsCount'] >= 10 ? "red" : ($data['reportedVidsCount'] > 0 ? "yellow" : "green");
 
 			return new ViewResponse('admin/dashboard', $data, true, 'layouts/admin.php');
 		}
@@ -44,7 +47,7 @@ class AdminController extends Controller {
 			return Utils::getUnauthorizedResponse();
 	}
 
-	public function videos($request, $type = 'all') {
+	public function videos($request, $type = 'all', $query = "") {
 		if(Session::get()->isModerator() || Session::get()->isAdmin()) {
 			$data = array();
 
@@ -56,11 +59,23 @@ class AdminController extends Controller {
 			$data['isAdmin'] = Session::get()->isAdmin();
 
 			$data['type'] = $type;
-
-			if($type == 'flagged'){
-				$data['vids'] = Video::getReportedVideos();
-			} else {
-				$data['vids'] = Video::find('all');
+			$data['query'] = $query;
+			
+			switch ($type){
+				case 'flagged' : $data['vids'] = Video::getReportedVideos();
+				break;
+				case 'all' : $data['vids'] = Video::find('all');
+				break;
+				case 'search' : 
+					$search = Video::find_by_id($query);
+					if($search){
+						$data['vids'] = array($search);
+					}else{						
+						$data['vids'] = Video::getSearchVideos($query);
+					}
+				break;
+				default : $data['vids'] = Video::find('all');
+				break;
 			}
 
 			return new ViewResponse('admin/videos', $data, true, 'layouts/admin.php');

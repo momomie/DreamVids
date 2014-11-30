@@ -87,3 +87,18 @@ function setToDiscover(vidId) {
 		});
 	}
 }
+
+function searchVideo(search){
+	if(search){
+		window.location = _webroot_ + "admin/videos/search/" + encodeURIComponent(search);
+	}
+}
+
+if(document.getElementById("search")){
+	var element = document.getElementById("search");
+	element.onkeypress=function(event){
+		if(event.keyCode == 13){
+			searchVideo(element.value);
+		}
+	}
+}

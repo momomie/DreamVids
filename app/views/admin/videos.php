@@ -2,11 +2,13 @@
 	<div class="container-fluid">
 	<h1>Panel <?php echo $rankStr; ?> - Vidéos</h1>
 		<div class="row">
-			<div class="col-xs-12">
+			<div class="col-xs-12 form-inline">
 				<a class="<?php echo ($type == 'all') ? 'active' : false; ?> btn btn-primary" href="<?php echo WEBROOT.'admin/videos/all'; ?>">Toutes les vidéos</a>
 				<a class="<?php echo ($type == 'flagged') ? 'active' : false; ?> btn btn-warning" href="<?php echo WEBROOT.'admin/videos/flagged'; ?>">Flagged</a>
+				<input type="text" class="form-control" value="<?php echo $query; ?>" id="search" placeholder="Rechercher"> 
+				<a class="btn btn-primary" href="#" onclick="searchVideo(document.getElementById('search').value)">Rechercher</a>
+				<br>
 			</div>
-		</div>
 		<br/>
 		<div class="row">
 			<div class="col-xs-12">
@@ -23,7 +25,9 @@
 					</thead>
 
 					<tbody>
-						<?php foreach ($vids as $vid): ?>
+						<?php 
+						if($vids) 
+						foreach ($vids as $vid): ?>
 							<tr>
 								<td><a href="<?php echo WEBROOT.'watch/'.$vid->id; ?>"><?php echo $vid->title; ?></a></td>
 								<td><?php echo UserChannel::find($vid->poster_id)->name; ?></td>
