@@ -1,3 +1,14 @@
+function flagVideo(vidId) {
+	if(confirm("Voulez-vous signaler cette video ?")) {
+		marmottajax.put({
+			url: _webroot_ + 'videos/' + vidId,
+			options: { flag: true }
+		}).then(function(result) {
+			window.location.reload();
+		});
+	}
+}
+
 function unFlagVideo(vidId) {
 	if(confirm("Voulez-vous annuler le report de cette video ?")) {
 		marmottajax.put({

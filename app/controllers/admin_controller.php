@@ -44,7 +44,7 @@ class AdminController extends Controller {
 			return Utils::getUnauthorizedResponse();
 	}
 
-	public function videos($request) {
+	public function videos($request, $type = 'all') {
 		if(Session::get()->isModerator() || Session::get()->isAdmin()) {
 			$data = array();
 
@@ -55,7 +55,15 @@ class AdminController extends Controller {
 			$data['isModo'] = Session::get()->isModerator();
 			$data['isAdmin'] = Session::get()->isAdmin();
 
-			$data['reportedVids'] = Video::getReportedVideos();
+			$data['isFlagged'] = Video::isFlagged();
+
+			$data['type'] = $type;
+
+			if($type == 'flagged'){
+				$data['vids'] = Video::getReportedVideos();
+			} else {
+				$data['vids'] = Video::find('all');
+			}
 
 			return new ViewResponse('admin/videos', $data, true, 'layouts/admin.php');
 		}
