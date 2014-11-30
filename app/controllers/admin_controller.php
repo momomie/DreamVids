@@ -27,14 +27,16 @@ class AdminController extends Controller {
 	public function dashboard($request) {
 		if(Session::get()->isModerator() || Session::get()->isAdmin()) {
 			$data = array();
+
 			$data['currentPage'] = 'admin';
+			$data['current'] = 'dashboard';
 
 			$data['rankStr'] = Session::get()->isModerator() ? 'Moderateur' : 'Admin';
 			$data['isModo'] = Session::get()->isModerator();
 			$data['isAdmin'] = Session::get()->isAdmin();
 			$data['user'] = Session::get();
 			$data['reportedVidsCount'] = Video::count(array('conditions' => array('flagged', 1)));
-			$data['reportedCommentsCount'] = 0; //TEMP
+			$data['reportedCommentsCount'] = Comment::count(array('conditions' => array('flagged', 1)));;
 
 			return new ViewResponse('admin/dashboard', $data, true, 'layouts/admin.php');
 		}
@@ -45,7 +47,9 @@ class AdminController extends Controller {
 	public function videos($request) {
 		if(Session::get()->isModerator() || Session::get()->isAdmin()) {
 			$data = array();
+
 			$data['currentPage'] = 'admin';
+			$data['current'] = 'videos';
 
 			$data['rankStr'] = Session::get()->isModerator() ? 'Moderateur' : 'Admin';
 			$data['isModo'] = Session::get()->isModerator();
@@ -62,7 +66,9 @@ class AdminController extends Controller {
 	public function channels($request) {
 		if(Session::get()->isModerator() || Session::get()->isAdmin()) {
 			$data = array();
+
 			$data['currentPage'] = 'admin';
+			$data['current'] = 'channels';
 
 			$page = $request->getParameter('p') ? Utils::secure($request->getParameter('p')) : 1;
 			$channelNumber = UserChannel::count('all');
@@ -82,7 +88,9 @@ class AdminController extends Controller {
 	public function comments($request) {
 		if(Session::get()->isModerator() || Session::get()->isAdmin()) {
 			$data = array();
+
 			$data['currentPage'] = 'admin';
+			$data['current'] = 'comments';
 
 			$page = $request->getParameter('p') ? Utils::secure($request->getParameter('p')) : 1;
 			$channelNumber = UserChannel::count('all');
@@ -91,7 +99,7 @@ class AdminController extends Controller {
 			$data['isModo'] = Session::get()->isModerator();
 			$data['isAdmin'] = Session::get()->isAdmin();
 			$data['user'] = Session::get();
-			// $data['comments'] = Comment::getReportedComments();
+			$data['comments'] = Comment::getReportedComments();
 
 			return new ViewResponse('admin/comments', $data, true, 'layouts/admin.php');
 		}

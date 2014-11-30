@@ -23,14 +23,14 @@
 						<td><?php echo $vid->dislikes; ?></td>
 						<td>
 							<?php if($vid->isSuspended()) { ?>
-								<button class="button-success pure-button" onclick="unSuspendVideo('<?php echo $vid->id ?>')">Annuler la suspension</button>	
+								<button class="btn btn-success" onclick="unSuspendVideo('<?php echo $vid->id ?>')">Annuler la suspension</button>	
 							<?php } else { ?>
-								<button class="button-success pure-button" onclick="unFlagVideo('<?php echo $vid->id ?>')">Annuler le flag</button>
-								<button class="button-warning pure-button" onclick="suspendVideo('<?php echo $vid->id ?>')">Suspendre</button>
+								<button class="btn btn-success" onclick="unFlagVideo('<?php echo $vid->id ?>')">Annuler le flag</button>
+								<button class="btn btn-warning" onclick="suspendVideo('<?php echo $vid->id ?>')">Suspendre</button>
 							<?php } ?>
 						
 							<?php if($isAdmin): ?>
-								<button class="button-error pure-button" onclick="eraseVideo('<?php echo $vid->id ?>')">Supprimer</button>
+								<button class="btn btn-danger" onclick="eraseVideo('<?php echo $vid->id ?>')">Supprimer</button>
 							<?php endif ?>
 						</td>
 					</tr>
