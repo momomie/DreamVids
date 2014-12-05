@@ -7,8 +7,8 @@
 				<a class="<?php echo ($type == 'flagged') ? 'active' : false; ?> btn btn-warning" href="<?php echo WEBROOT.'admin/videos/flagged'; ?>">Flagged</a>
 				<input type="text" class="form-control" value="<?php echo $query; ?>" id="search" placeholder="Rechercher"> 
 				<a class="btn btn-primary" href="#" onclick="searchVideo(document.getElementById('search').value)">Rechercher</a>
+				<br>
 			</div>
-		</div>
 		<br/>
 		<div class="row">
 			<div class="col-xs-12">
