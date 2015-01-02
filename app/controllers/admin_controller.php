@@ -50,17 +50,17 @@ class AdminController extends Controller {
 	public function videos($request, $type = 'all', $query = "") {
 		if(Session::isActive() && (Session::get()->isModerator() || Session::get()->isAdmin())) {
 			$data = array();
-
+			
 			$data['currentPage'] = 'admin';
 			$data['current'] = 'videos';
-
+			
 			$data['rankStr'] = Session::get()->isModerator() ? 'Moderateur' : 'Admin';
 			$data['isModo'] = Session::get()->isModerator();
 			$data['isAdmin'] = Session::get()->isAdmin();
-
+			
 			$data['type'] = $type;
 			$data['query'] = $query;
-			
+
 			switch ($type){
 				case 'flagged' : $data['vids'] = Video::getReportedVideos();
 				break;

@@ -29,7 +29,7 @@
 						if($vids) 
 						foreach ($vids as $vid): ?>
 							<tr>
-								<td><a href="<?php echo WEBROOT.'watch/'.$vid->id; ?>"><?php echo $vid->title; ?></a></td>
+								<td><a target="_BLANK" href="<?php echo WEBROOT.'watch/'.$vid->id; ?>"><?php echo $vid->title; ?></a></td>
 								<td><?php echo UserChannel::find($vid->poster_id)->name; ?></td>
 								<td><?php echo number_format($vid->views); ?></td>
 								<td><?php echo $vid->likes; ?></td>
